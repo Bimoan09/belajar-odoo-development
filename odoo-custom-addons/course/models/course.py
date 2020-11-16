@@ -13,8 +13,16 @@ class Course(models.Model):
         help="Fill course name"
     )
     # value = fields.Integer()
-    author = fields.Char()
-    description = fields.Text()
+    author = fields.Char(
+        string="Course Author",
+        required=True,
+        help="Fill course author"
+    )
+    description = fields.Text(
+        string="Course Description",
+        required=True,
+        help="Fill course description"
+    )
 
     @api.depends('value')
     def _value_pc(self):
