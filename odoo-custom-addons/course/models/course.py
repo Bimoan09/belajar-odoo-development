@@ -24,6 +24,11 @@ class Course(models.Model):
         help="Fill course description"
     )
 
+    active = fields.Boolean(
+        string="Active",
+        default=True,
+    )
+
     @api.depends('value')
     def _value_pc(self):
         for record in self:
