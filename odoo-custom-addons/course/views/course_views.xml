@@ -41,6 +41,19 @@
           </field>
       </record>
 
+
+      <record id="bimo_course_view_search" model="ir.ui.view">
+         <field name="name">bimo.course.view.search</field>
+         <field name="model">bimo.course</field>
+          <field name="arch" type="xml">
+              <search string="Search Data">
+                  <field name="name" string="Name" domain="[()]"/>
+                  <field name="description" string="Description" domain="[()]"/>
+                  <field name="author" string="Author" domain="[()]"/>
+              </search>
+         </field>
+      </record>
+
     <record id="course_action" model="ir.actions.act_window">
         <field name="name">List Course</field>
         <field name="type">ir.actions.act_window</field>
