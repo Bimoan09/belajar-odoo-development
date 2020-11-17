@@ -31,9 +31,9 @@
                           <page string="Description" name="description">
                                   <field name="description"/>
                           </page>
-<!--                           <page string="Author" name="author">-->
-<!--                                  <field name="author"/>-->
-<!--                          </page>-->
+                           <page string="Lists Course" name="course">
+                                  <field name="course_ids"/>
+                          </page>
                       </notebook>
                   </sheet>
               </form>

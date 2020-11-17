@@ -24,6 +24,11 @@ class CourseCategory(models.Model):
         default=True,
     )
 
+    course_ids = fields.One2many(comodel_name="bimo.course",
+                                    inverse_name="category_id",
+                                    string="Lists Course",
+                                    required=True, )
+
     @api.depends('value')
     def _value_pc(self):
         for record in self:
