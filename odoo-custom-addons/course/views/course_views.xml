@@ -48,7 +48,7 @@
           <field name="arch" type="xml">
               <search string="Search Data">
                   <field name="name" string="Name" domain="[()]"/>
-                  <field name="description" string="Description" domain="[()]"/>
+                  <field name="description" string="Name And Description" filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
                   <field name="author" string="Author" domain="[()]"/>
               </search>
          </field>
