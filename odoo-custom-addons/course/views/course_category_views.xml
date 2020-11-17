@@ -1,30 +1,27 @@
 <odoo>
   <data>
 
-   <record id="bimo_course_view_tree" model="ir.ui.view">
-       <field name="name">bimo.course.view.tree</field>
-       <field name="model">bimo.course</field>
+   <record id="bimo_course_category_view_tree" model="ir.ui.view">
+       <field name="name">bimo.course.category.view.tree</field>
+       <field name="model">bimo.course.category</field>
        <field name="arch" type="xml">
            <tree>
                <field name="name"/>
-               <field name="category_id"/>
                <field name="description"/>
-               <field name="author"/>
                <field name="active"/>
            </tree>
        </field>
    </record>
 
-      <record id="bimo_course_view_form" model="ir.ui.view">
-          <field name="name">bimo.course.view.form</field>
-          <field name="model">bimo.course</field>
+      <record id="bimo_course_category_view_form" model="ir.ui.view">
+          <field name="name">bimo.course.category.view.form</field>
+          <field name="model">bimo.course.category</field>
           <field name="arch" type="xml">
               <form string="">
                   <sheet>
                       <group>
                         <group>
                           <field name="name"/>
-                               <field name="category_id"/>
                         </group>
                         <group>
                           <field name="active"/>
@@ -34,9 +31,9 @@
                           <page string="Description" name="description">
                                   <field name="description"/>
                           </page>
-                           <page string="Author" name="author">
-                                  <field name="author"/>
-                          </page>
+<!--                           <page string="Author" name="author">-->
+<!--                                  <field name="author"/>-->
+<!--                          </page>-->
                       </notebook>
                   </sheet>
               </form>
@@ -44,34 +41,22 @@
       </record>
 
 
-      <record id="bimo_course_view_search" model="ir.ui.view">
-         <field name="name">bimo.course.view.search</field>
-         <field name="model">bimo.course</field>
+      <record id="bimo_course_category_view_search" model="ir.ui.view">
+         <field name="name">bimo.course.category.view.search</field>
+         <field name="model">bimo.course.category</field>
           <field name="arch" type="xml">
-              <search string="Search Data">
+              <search string="Search Data Course Category">
                   <field name="name" string="Name" domain="[()]"/>
                   <field name="active" string="Active" domain="[()]"/>
                   <field name="description" string="Name And Description" filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
-                  <field name="category_id"/>
-                  <field name="author" string="Author" domain="[()]"/>
-
-<!--                    <filter name="kubernetes" string="Kubernetes" domain="[('name','ilike','kubernetes')]"/>-->
-                    <filter name="true" string="Active" domain="[('active','=', 1 )]"/>
-                    <filter name="false" string="Un-Active" domain="[('active','=', 0 )]"/>
-
-                  <group string="Group By">
-                          <filter name="group_by_category"
-                                  string="Category"
-                                  context="{'group_by': 'category_id'}"/>
-                  </group>
               </search>
          </field>
       </record>
 
-    <record id="course_action" model="ir.actions.act_window">
-        <field name="name">List Course</field>
+    <record id="course_category_action" model="ir.actions.act_window">
+        <field name="name">List Course Category</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">bimo.course</field>
+        <field name="res_model">bimo.course.category</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
           <p class="oe_view_nocontent_create">
@@ -84,10 +69,10 @@
         </field>
     </record>
       <!-- This Menu Item must have a parent and an action -->
-      <menuitem id="bimo_course_menu_act"
-                name="Course"
+      <menuitem id="bimo_course_category_menu_act"
+                name="Course Category"
                 parent="course_master_data"
-                action="course_action"
-                sequence="10"/>
+                action="course_category_action"
+                sequence="20"/>
   </data>
 </odoo>

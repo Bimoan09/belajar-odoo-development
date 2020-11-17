@@ -29,6 +29,11 @@ class Course(models.Model):
         default=True,
     )
 
+
+    category_id = fields.Many2one(comodel_name="bimo.course.category",
+                                  string="Category",
+                                  required=True, )
+
     @api.depends('value')
     def _value_pc(self):
         for record in self:
