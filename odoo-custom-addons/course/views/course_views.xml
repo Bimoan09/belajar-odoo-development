@@ -48,8 +48,13 @@
           <field name="arch" type="xml">
               <search string="Search Data">
                   <field name="name" string="Name" domain="[()]"/>
+                  <field name="active" string="Active" domain="[()]"/>
                   <field name="description" string="Name And Description" filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
                   <field name="author" string="Author" domain="[()]"/>
+
+<!--                    <filter name="kubernetes" string="Kubernetes" domain="[('name','ilike','kubernetes')]"/>-->
+                    <filter name="true" string="Active" domain="[('active','=', 1 )]"/>
+                    <filter name="false" string="Un-Active" domain="[('active','=', 0 )]"/>
               </search>
          </field>
       </record>
