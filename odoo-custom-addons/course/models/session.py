@@ -33,6 +33,9 @@ class Session(models.Model):
                                store=True,
                                required=False,)
 
+
+
+
     @api.depends('min_attendee', 'attendee_ids')
     def _compute_taken_seats(self):
         for record in self:
