@@ -1,0 +1,94 @@
+<odoo>
+  <data>
+
+      <record id="bimo_session_view_tree" model="ir.ui.view">
+          <field name="name">bimo.session.view.tree</field>
+          <field name="model">bimo.session</field>
+          <field name="arch" type="xml">
+              <tree string="Session Tree">
+                  <field name="name"/>
+                  <field name="course_id"/>
+                  <field name="instructor_id"/>
+                  <field name="session_date"/>
+                  <field name="min_attendee"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="bimo_session_view_form" model="ir.ui.view">
+          <field name="name">bimo.session.view.form</field>
+          <field name="model">bimo.session</field>
+          <field name="arch" type="xml">
+              <form string="Session Form">
+                  <sheet>
+                      <group>
+                        <group>
+                              <field name="name"/>
+                              <field name="course_id"/>
+                              <field name="instructor_id"/>
+                        </group>
+
+                        <group>
+                              <field name="session_date"/>
+                              <field name="min_attendee"/>
+                        </group>
+
+                      </group>
+
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+
+      <record id="bimo_session_view_search" model="ir.ui.view">
+         <field name="name">bimo.session.view.search</field>
+         <field name="model">bimo.session</field>
+          <field name="arch" type="xml">
+              <search string="Search Data">
+                  <field name="name" string="Name"/>
+                  <field name="course_id" string="Course" />
+                  <field name="instructor_id" string="Instructor"/>
+
+<!--                    <filter name="kubernetes" string="Kubernetes" domain="[('name','ilike','kubernetes')]"/>-->
+<!--                    <filter name="true" string="Active" domain="[('active','=', 1 )]"/>-->
+<!--                    <filter name="false" string="Un-Active" domain="[('active','=', 0 )]"/>-->
+
+                  <group string="Group By">
+                          <filter name="group_by_course"
+                                  string="Course"
+                                  context="{'group_by': 'course_id'}"/>
+
+                          <filter name="group_by_instructor"
+                                  string="Instructor"
+                                  context="{'group_by': 'instructor_id'}"/>
+                  </group>
+              </search>
+         </field>
+      </record>
+
+     <record id="bimo_session_action" model="ir.actions.act_window">
+        <field name="name">List Session</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bimo.session</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Create new session...
+          </p>
+
+            <p>
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
+
+
+        <menuitem id="bimo_session_menu_act"
+                name="Session"
+                parent="course_root"
+                action="bimo_session_action"
+                sequence="10"/>
+
+  </data>
+</odoo>

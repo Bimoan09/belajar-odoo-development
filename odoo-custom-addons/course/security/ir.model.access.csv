@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_bimo_course,bimo_course.bimo_course,model_bimo_course,base.group_user,1,1,1,1
 access_bimo_course_category,bimo_course.bimo_course_category,model_bimo_course_category,base.group_user,1,1,1,1
+access_bimo_session,bimo_session.bimo_session,model_bimo_session,base.group_user,1,1,1,1
