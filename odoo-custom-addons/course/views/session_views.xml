@@ -35,6 +35,19 @@
 
                       </group>
 
+                      <notebook>
+                          <page name="attendee" string="Attendee">
+                                  <field name="attendee_ids">
+                                        <tree editable="bottom">
+                                           <field name="name"/>
+                                           <field name="student_id"/>
+                                           <field name="reg_date"/>
+                                           <field name="remark"/>
+                                       </tree>
+                                  </field>
+                          </page>
+                      </notebook>
+
                   </sheet>
               </form>
           </field>
