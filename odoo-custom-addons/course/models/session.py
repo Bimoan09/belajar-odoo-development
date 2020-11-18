@@ -1,6 +1,7 @@
 
 
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
+from odoo.exceptions import ValidationError
 
 
 class Session(models.Model):
@@ -27,6 +28,36 @@ class Session(models.Model):
                                    inverse_name="session_id",
                                    string="Attendee",
                                    required=False, )
+    taken_seats = fields.Float(string="Taken seats",
+                               compute="_compute_taken_seats",
+                               store=True,
+                               required=False,)
+
+    @api.depends('min_attendee', 'attendee_ids')
+    def _compute_taken_seats(self):
+        for record in self:
+            if not record.min_attendee:
+                 record.taken_seats = 0.0
+            else:
+                 record.taken_seats = 100.0 * len(record.attendee_ids) / record.min_attendee
+
+    @api.onchange('min_attendee', 'attendee_ids')
+    def onchange_attendee(self):
+        if self.min_attendee < 0:
+            return {
+                'warning': {
+                    'title': "Data is wrong!",
+                    'message': "Min Attendee must not be less than 0",
+                },
+            }
+        if self.min_attendee < len(self.attendee_ids):
+            return {
+                'warning': {
+                    'title': "Too many attendees",
+                    'message': "Increase attendee or remove excess attendees",
+                },
+            }
+
 
 
     class Attendee(models.Model):
